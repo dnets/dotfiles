@@ -491,6 +491,9 @@ filetype plugin indent on
 "                        Conque-Shell
 "--------------------------------------------------------------
 
+" Enable fast mode (no colors etc)
+let g:ConqueTerm_FastMode = 0
+
 " Enable session support
 let g:ConqueTerm_SessionSupport=1
 
