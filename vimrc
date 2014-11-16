@@ -492,7 +492,7 @@ filetype plugin indent on
 "--------------------------------------------------------------
 
 " Enable fast mode (no colors etc)
-let g:ConqueTerm_FastMode = 0
+let g:ConqueTerm_FastMode=1
 
 " Enable session support
 let g:ConqueTerm_SessionSupport=1
