@@ -1,6 +1,5 @@
 "
 "                    .vimrc by Dmitry Nets
-"                        version 1.10
 "
 "            When you want to instruct, be brief.
 "                                             - Cicero
@@ -594,6 +593,18 @@ let g:airline#extensions#bufferline#enabled=0
 " Enable/disable Syntastic integration
 let g:airline#extensions#syntastic#enabled=1
 
+" Enable/disable fugitive/lawrencium integration
+let g:airline#extensions#branch#enabled=1
+
+" Change the text for when no branch is detected
+let g:airline#extensions#branch#empty_message=''
+
+" Use vcscommand.vim if available
+let g:airline#extensions#branch#use_vcscommand=0
+
+" Truncate long branch names to a fixed length
+let g:airline#extensions#branch#displayed_head_limit=10
+
 " Enable/disable whitespace extension
 let g:airline#extensions#whitespace#enabled=0
 
@@ -651,7 +662,6 @@ let g:UltiSnipsExpandTrigger = "<s-tab>"
 
 " List snippets
 let g:UltiSnipsListSnippets = "<C-tab>"
-
 
 "--------------------------------------------------------------
 " VIMRCTOC              END OF .vimrc
