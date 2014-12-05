@@ -8,7 +8,6 @@ omzfolder=~/.oh-my-zsh
 
 echo "Configuring zsh ..."
 
-# Clone Vundle into ~./vim/bundle/Vundle.vim
 echo "Cloning oh-my-zsh into $omzfolder ..."
 git clone https://github.com/robbyrussell/oh-my-zsh $omzfolder
 
