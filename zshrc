@@ -51,6 +51,5 @@ setopt extended_glob
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias lsd="ls -adF *(/)"
-alias lshd="ls -adF .*(/)"
 alias df="df -h"
+alias idea="vim ~/notes/ideas"

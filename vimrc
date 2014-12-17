@@ -475,7 +475,7 @@ Plugin 'bling/vim-bufferline'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'powerman/vim-plugin-ruscmd'
 Plugin 'reedes/vim-pencil'
-Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 
