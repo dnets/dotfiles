@@ -478,6 +478,7 @@ Plugin 'reedes/vim-pencil'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'farseer90718/vim-taskwarrior'
 
 " Call end function
 call vundle#end()
