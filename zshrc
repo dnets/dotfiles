@@ -51,5 +51,17 @@ setopt extended_glob
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Search packages
+alias pms="sudo pacman -Ss"
+# Install pacman package
+alias pmi="sudo pacman -S"
+# Remove single pacman package
+alias pmr="sudo pacman -R"
+# Remove package and unneeded dependencies
+alias pmrd="sudo pacman -Rs"
+# Update all packages
+alias pmu="sudo pacman -Syu"
+
 alias df="df -h"
 alias idea="vim ~/notes/ideas"
