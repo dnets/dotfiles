@@ -64,6 +64,9 @@ alias pmrd="sudo pacman -Rs"
 alias pmu="sudo pacman -Syu"
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
+# git: list tracked files
+alias gls = git ls-tree --full-tree -r HEAD
 
 alias df="df -h"
+
 alias idea="vim ~/notes/ideas"
