@@ -62,6 +62,8 @@ alias pmr="sudo pacman -R"
 alias pmrd="sudo pacman -Rs"
 # Update all packages
 alias pmu="sudo pacman -Syu"
+# Get files from EX.UA
+alias exua="~/scripts/exua.sh"
 
 alias df="df -h"
 alias idea="vim ~/notes/ideas"

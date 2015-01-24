@@ -42,6 +42,13 @@
 " SuperTab (insert mode completion)
 " UltiSnips (snippet engine)
 " vim-snippets (snippet collection)
+" vim-taskwarrior (interactive interface for taskwarrior)
+" emmet-vim (expand abbreviations for vim)
+" HTML-AutoCloseTag (closes HTML tags automagically)
+" NERDCommenter (comment out lines)
+" vim-repeat (enables . repeat for plugins)
+"
+" TOTAL: 25
 "
 "--------------------------------------------------------------
 " VIMRC010            General settings
@@ -85,7 +92,7 @@ colorscheme molokai
 
 " Set options when running in GUI mode
 if has("gui_running")
-    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 10
+    set guifont=Terminus\ Regular\ 8
     " Hide toolbar
     set guioptions-=T
     set guioptions+=e
@@ -226,6 +233,8 @@ nnoremap <leader><leader><leader>z :qa!<CR>
 " Quit all buffers, tabs and splits AND SAVE
 nnoremap <leader><leader><leader>w :wqa!<CR>
 
+" Change directory to current file
+nnoremap <leader>cd :cd %:p:h<CR>
 "--------------------------------------------------------------
 " VIMRC04c      Edit, Copy, Paste macros
 "--------------------------------------------------------------
@@ -300,10 +309,10 @@ noremap <leader><leader>q :quit<CR>
 "--------------------------------------------------------------
 
 " Next buffer
-nnoremap ; :bn<CR>
+nnoremap <leader>; :bn<CR>
 
 " Previous buffer
-nnoremap <leader>; :bp<CR>
+" nnoremap <leader>; :bp<CR>
 
 " Display buffers
 nnoremap <leader><leader>b :ls<CR>
@@ -479,6 +488,10 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'farseer90718/vim-taskwarrior'
+Plugin 'mattn/emmet-vim'
+Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-repeat'
 
 " Call end function
 call vundle#end()
@@ -661,10 +674,16 @@ let g:pencil#textwidth=60
 "--------------------------------------------------------------
 
 " Expand snippet
-let g:UltiSnipsExpandTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = '<c-tab>'
 
 " List snippets
-let g:UltiSnipsListSnippets = "<C-tab>"
+" let g:UltiSnipsListSnippets = 
+
+"--------------------------------------------------------------
+"                           Emmet
+"--------------------------------------------------------------
+
+let g:user_emmet_expandabbr_key = '<c-e>'
 
 "--------------------------------------------------------------
 " VIMRCTOC              END OF .vimrc
