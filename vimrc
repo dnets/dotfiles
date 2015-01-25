@@ -235,6 +235,7 @@ nnoremap <leader><leader><leader>w :wqa!<CR>
 
 " Change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>
+
 "--------------------------------------------------------------
 " VIMRC04c      Edit, Copy, Paste macros
 "--------------------------------------------------------------

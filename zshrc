@@ -52,21 +52,55 @@ setopt extended_glob
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Search packages
+# Pacman: search packages
 alias pms="sudo pacman -Ss"
-# Install pacman package
+# Pacman: install package
 alias pmi="sudo pacman -S"
-# Remove single pacman package
+# Pacman: remove single package
 alias pmr="sudo pacman -R"
-# Remove package and unneeded dependencies
+# Pacman: remove package and orphaned dependencies
 alias pmrd="sudo pacman -Rs"
-# Update all packages
+# Pacman: update all packages
 alias pmu="sudo pacman -Syu"
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
+
 # git: list tracked files
 alias gls="git ls-tree --full-tree -r HEAD"
+# git: push origin master
+alias gpom="git push origin master"
 
+# Taskwarrior: alias
+alias t="task"
+# Taskwarrior: sync
+alias tws="task sync"
+# Taskwarrior: show list
+alias tl="task list"
+# Taskwarrior: show stats
+alias twst="task stats"
+# Taskwarrior: show project
+alias twp="task project"
+# Taskwarrior: add task
+alias ta="task add"
+# Taskwarrior: show all
+alias twa="task all"
+# Taskwarrior: show today
+alias twt="task today"
+# Taskwarrior: show calendar
+alias twcal="task calendar"
+# Taskwarrior: show completed
+alias twc="task completed"
+# Taskwarrior: show burndown
+alias twb="task burndown.weekly"
+# Taskwarrior: show graphical history
+alias twgh="task ghistory"
+# Taskwarrior: show history
+alias twh="task history"
+# Taskwarrior: show recurring
+alias twr="task recurring"
+# Taskwarrior: show next
+alias twn="task next"
+# Disk usage human-readable
 alias df="df -h"
-
+# Jot down quick notes
 alias idea="vim ~/notes/ideas"
