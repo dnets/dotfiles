@@ -87,7 +87,7 @@ alias twa="task all"
 # Taskwarrior: show today
 alias twt="task today"
 # Taskwarrior: show calendar
-alias twcal="task calendar"
+alias cal="task calendar"
 # Taskwarrior: show completed
 alias twc="task completed"
 # Taskwarrior: show burndown
