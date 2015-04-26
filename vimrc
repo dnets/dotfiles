@@ -85,6 +85,8 @@ set autoread
 " VIMRC020               User Interface
 "--------------------------------------------------------------
 
+set omnifunc=syntaxcomplete#Complete
+
 set t_Co=256
 
 " Terminal color scheme
@@ -485,7 +487,6 @@ Plugin 'bling/vim-bufferline'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'powerman/vim-plugin-ruscmd'
 Plugin 'reedes/vim-pencil'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'farseer90718/vim-taskwarrior'
@@ -493,6 +494,10 @@ Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-repeat'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'ahayman/vim-nodejs-complete'
+Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Valloric/YouCompleteMe'
 
 " Call end function
 call vundle#end()
@@ -644,6 +649,22 @@ noremap <localleader><localleader><localleader>w :StripWhitespace<CR>
 " Toggle whitespace highlighting
 noremap <localleader><localleader>w :ToggleWhitespace<CR>
 
+
+"--------------------------------------------------------------
+"                         syntastic
+"--------------------------------------------------------------
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['jshint']
+
 "--------------------------------------------------------------
 "                         vim-pencil
 "--------------------------------------------------------------
@@ -675,7 +696,7 @@ let g:pencil#textwidth=60
 "--------------------------------------------------------------
 
 " Expand snippet
-let g:UltiSnipsExpandTrigger = '<c-tab>'
+" let g:UltiSnipsExpandTrigger = '<c-tab>'
 
 " List snippets
 " let g:UltiSnipsListSnippets = 
@@ -685,6 +706,19 @@ let g:UltiSnipsExpandTrigger = '<c-tab>'
 "--------------------------------------------------------------
 
 let g:user_emmet_expandabbr_key = '<c-e>'
+
+"--------------------------------------------------------------
+"                          NeoComplete
+"--------------------------------------------------------------
+
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+" Tab completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "--------------------------------------------------------------
 " VIMRCTOC              END OF .vimrc

@@ -47,10 +47,12 @@ setopt extended_glob
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# ls: list
+alias lsd="ls -d .*/ */"
 
 # Pacman: search packages
 alias pms="sudo pacman -Ss"
@@ -62,44 +64,22 @@ alias pmr="sudo pacman -R"
 alias pmrd="sudo pacman -Rs"
 # Pacman: update all packages
 alias pmu="sudo pacman -Syu"
+# Pacman: clear db.lck
+alias pmcdb="sudo rm /var/lib/pacman/db.lck"
+
+# yaourt
+alias y="yaourt"
+
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
 
+# git: checkout 
+alias gcb="git checkout -b"
 # git: list tracked files
 alias gls="git ls-tree --full-tree -r HEAD"
 # git: push origin master
 alias gpom="git push origin master"
 
-# Taskwarrior: alias
-alias t="task"
-# Taskwarrior: sync
-alias tws="task sync"
-# Taskwarrior: show list
-alias tl="task list"
-# Taskwarrior: show stats
-alias twst="task stats"
-# Taskwarrior: show project
-alias twp="task project"
-# Taskwarrior: add task
-alias ta="task add"
-# Taskwarrior: show all
-alias twa="task all"
-# Taskwarrior: show today
-alias twt="task today"
-# Taskwarrior: show calendar
-alias cal="task calendar"
-# Taskwarrior: show completed
-alias twc="task completed"
-# Taskwarrior: show burndown
-alias twb="task burndown.weekly"
-# Taskwarrior: show graphical history
-alias twgh="task ghistory"
-# Taskwarrior: show history
-alias twh="task history"
-# Taskwarrior: show recurring
-alias twr="task recurring"
-# Taskwarrior: show next
-alias twn="task next"
 # Disk usage human-readable
 alias df="df -h"
 # Jot down quick notes
