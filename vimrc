@@ -497,6 +497,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ahayman/vim-nodejs-complete'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'jplaut/vim-arduino-ino'
+
 "Plugin 'Valloric/YouCompleteMe'
 
 " Call end function

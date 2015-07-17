@@ -51,7 +51,10 @@ setopt extended_glob
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# ls: list
+# rm: remove recursive interactive verbose w/ directories
+alias rmr="rm -rdvI"
+
+# ls: list directories
 alias lsd="ls -d .*/ */"
 
 # Pacman: search packages
@@ -66,14 +69,23 @@ alias pmrd="sudo pacman -Rs"
 alias pmu="sudo pacman -Syu"
 # Pacman: clear db.lck
 alias pmcdb="sudo rm /var/lib/pacman/db.lck"
+# Pacman: show package files paths
+alias pmw="pacman -Qlk"
 
 # yaourt
 alias y="yaourt"
+# yaourt: update
+alias yu="yaourt -Syua"
 
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
+# ino: build&deploy
+alias ibd="ino build;ino upload"
 
-# git: checkout 
+# mkdir
+alias md="mkdir -pv"
+
+# git: checkout
 alias gcb="git checkout -b"
 # git: list tracked files
 alias gls="git ls-tree --full-tree -r HEAD"
@@ -82,5 +94,9 @@ alias gpom="git push origin master"
 
 # Disk usage human-readable
 alias df="df -h"
+
+# du: list directories sorted by size
+alias duds="du -sh * | sort -h"
+
 # Jot down quick notes
 alias idea="vim ~/notes/ideas"
