@@ -12,7 +12,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # list of files/folders to symlink in homedir
-files="vimrc zshrc taskrc tmuxrc"
+files="vimrc zshrc taskrc tmux.conf"
 ##########
 
 # Create dotfiles_old in homedir
