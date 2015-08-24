@@ -2,11 +2,17 @@
 # This config is based oh-my-zsh
 # Use zsh-setup.sh to install oh-my-zsh and additional plugins
 
+# Set default user to prevent user@hostname from displaying in
+# prompt while on home machine
+DEFAULT_USER="$USER"
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="gianu"
+#ZSH_THEME="gyanu"
+#ZSH_THEME="gallois"
+ZSH_THEME="wezm"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -17,12 +23,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git common-aliases gitfast git-extras vi-mode wd opp)
-
-# History
-HISTFILE="~/.histfile"
-HISTSIZE=10000
-SAVEHIST=10000
+plugins=(git common-aliases gitfast git-extras vi-mode wd opp history)
 
 # Use hjkl for completion
 zmodload zsh/complist
@@ -33,7 +34,10 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=/usr/local/share/npm/bin:$PATH
+export PATH=/home/dnets/.gem/ruby/2.2.0/bin:$PATH
+export EDITOR="vim"
+# export MANPATH="/usr/local/man:$MANPATH#"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,8 +83,6 @@ alias yu="yaourt -Syua"
 
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
-# ino: build&deploy
-alias ibd="ino build;ino upload"
 
 # mkdir
 alias md="mkdir -pv"
@@ -100,3 +102,19 @@ alias duds="du -sh * | sort -h"
 
 # Jot down quick notes
 alias idea="vim ~/notes/ideas"
+
+export NPM_PACKAGES="/home/dnets/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+# command
+unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+export NPM_PACKAGES="/home/dnets/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+# command
+unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
