@@ -37,6 +37,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=/home/dnets/.gem/ruby/2.2.0/bin:$PATH
 export EDITOR="vim"
+export NO_AT_BRIDGE=1
 # export MANPATH="/usr/local/man:$MANPATH#"
 
 source $ZSH/oh-my-zsh.sh
@@ -80,6 +81,12 @@ alias pmw="pacman -Qlk"
 alias y="yaourt"
 # yaourt: update
 alias yu="yaourt -Syua"
+
+# tmux
+alias tmux="tmux -2"
+
+#
+alias LS="| xargs -r ls -lah"
 
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
