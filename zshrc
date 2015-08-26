@@ -12,7 +12,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 #ZSH_THEME="gyanu"
 #ZSH_THEME="gallois"
-ZSH_THEME="wezm"
+ZSH_THEME="dnets"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -60,7 +60,7 @@ setopt extended_glob
 alias rmr="rm -rdvI"
 
 # ls: list directories
-alias lsd="ls -d .*/ */"
+alias lsd="ls -d  */ .*/"
 
 # Pacman: search packages
 alias pms="sudo pacman -Ss"
@@ -85,21 +85,25 @@ alias yu="yaourt -Syua"
 # tmux
 alias tmux="tmux -2"
 
-#
-alias LS="| xargs -r ls -lah"
-
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
 
 # mkdir
 alias md="mkdir -pv"
 
-# git: checkout
+# git: checkout branch
 alias gcb="git checkout -b"
 # git: list tracked files
-alias gls="git ls-tree --full-tree -r HEAD"
+alias gls="git ls-files"
 # git: push origin master
 alias gpom="git push origin master"
+# git: log
+alias glo="git log --graph --stat"
+alias gloa="git log --graph --stat --all"
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glga="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+
+alias gbv="git branch -v"
 
 # Disk usage human-readable
 alias df="df -h"
