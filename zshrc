@@ -98,10 +98,12 @@ alias gls="git ls-files"
 # git: push origin master
 alias gpom="git push origin master"
 # git: log
-alias glo="git log --graph --stat"
+alias glog="git log --graph --stat"
 alias gloa="git log --graph --stat --all"
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias glga="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias glgs="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  --stat"
+alias glgsa="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  --stat --all"
 
 alias gbv="git branch -v"
 
