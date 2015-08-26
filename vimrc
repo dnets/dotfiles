@@ -332,6 +332,8 @@ noremap <leader>bad :1,1000 bd!<CR>
 " Switch CWD to the directory of the open buffer
 noremap <leader>bcd :cd %:p:h<CR>:pwd<CR>
 
+" Reload buffers
+noremap <leader>br :bufdo e<CR>
 "--------------------------------------------------------------
 " VIMRC04g             Tab macros
 "--------------------------------------------------------------
