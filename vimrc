@@ -90,11 +90,11 @@ set omnifunc=syntaxcomplete#Complete
 set t_Co=256
 
 " Terminal color scheme
-colorscheme molokai
+colorscheme PaperColor
 
 " Set options when running in GUI mode
 if has("gui_running")
-    set guifont=Terminus\ Regular\ 8
+    set guifont=Liberation\ Mono\ For\ Powerline\ 9
     " Hide toolbar
     set guioptions-=T
     set guioptions+=e
@@ -610,7 +610,7 @@ let g:NERDTreeDirArrows=1
 let $PYTHONPATH='/usr/lib/python3.4/site-packages'
 set laststatus=2
 " Set theme
-let g:airline_theme='dark'
+let g:airline_theme='tomorrow'
 
 " Use powerline fonts
 let g:airline_powerline_fonts=1
