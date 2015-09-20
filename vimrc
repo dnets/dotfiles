@@ -175,6 +175,11 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" Folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 "--------------------------------------------------------------
 " VIMRC030           Indentation settings
 "--------------------------------------------------------------
