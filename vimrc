@@ -47,8 +47,11 @@
 " HTML-AutoCloseTag (closes HTML tags automagically)
 " NERDCommenter (comment out lines)
 " vim-repeat (enables . repeat for plugins)
+" YouCompleteMe (autocompletion engine)
+" matchit (tag matching using %)
+" better-indent-support-for-php-with-html (self-explanatory)
 "
-" TOTAL: 25
+" TOTAL: 26
 "
 "--------------------------------------------------------------
 " VIMRC010            General settings
@@ -459,6 +462,17 @@ set viminfo^=%
 "--------------------------------------------------------------
 " VIMRC060     Plugins, plugin settings & macros
 "--------------------------------------------------------------
+"                           Matchit
+"--------------------------------------------------------------
+" Enable matchit
+runtime macros/matchit.vim
+
+" make matchit work on C-like filetypes
+" c and cpp are already handled by their ftplugin
+au Filetype css,javascript,php
+        \ let b:match_words = &matchpairs
+
+"--------------------------------------------------------------
 "                           Vundle
 "--------------------------------------------------------------
 
@@ -493,18 +507,17 @@ Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'farseer90718/vim-taskwarrior'
 Plugin 'mattn/emmet-vim'
-Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-repeat'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ahayman/vim-nodejs-complete'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'sudar/vim-arduino-syntax'
-Plugin 'jplaut/vim-arduino-ino'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/SyntaxComplete'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'captbaritone/better-indent-support-for-php-with-html'
 
 " Call end function
 call vundle#end()
@@ -601,7 +614,7 @@ let g:easytags_async=1
 nnoremap <localleader><localleader>n :TrinityToggleNERDTree<CR>
 
 " Define g:NERDTreeDirArrows
-let g:NERDTreeDirArrows=1
+let g:NERDTreeDirArrows=0
 
 "--------------------------------------------------------------
 "                        vim-airline
@@ -650,7 +663,7 @@ autocmd VimEnter *
 "--------------------------------------------------------------
 
 " Change whitespace color
-highlight ExtraWhitespace ctermbg=8
+highlight ExtraWhitespace ctermbg=1
 
 " Delete trailing whitespace
 noremap <localleader><localleader><localleader>w :StripWhitespace<CR>
@@ -710,105 +723,27 @@ let g:pencil#textwidth=60
 " List snippets
 " let g:UltiSnipsListSnippets =
 
+
 "--------------------------------------------------------------
 "                           Emmet
 "--------------------------------------------------------------
 
-let g:user_emmet_expandabbr_key = '<c-e>'
-
-"--------------------------------------------------------------
-"                        NeoComplete
-"--------------------------------------------------------------
-
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-"inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"let g:user_emmet_expandabbr_key = '<c-e>'
+let g:user_emmet_leader_key = '<c-e>'
 
 "--------------------------------------------------------------
 "               Javascirpt Libraries Syntax
 "--------------------------------------------------------------
 
 let g:used_javascript_libs = 'underscore, backbone, angularjs, angularui, angularuirouter, handlebars'
+
+"--------------------------------------------------------------
+"                      YouCompleteMe
+"--------------------------------------------------------------
+
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_invoke_completion = '<C-b>'
 
 "--------------------------------------------------------------
 " VIMRCTOC              END OF .vimrc
