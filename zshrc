@@ -1,7 +1,7 @@
 # zshrc by Dmitry Nets
 # This config is based oh-my-zsh
 # Use zsh-setup.sh to install oh-my-zsh and additional plugins
-
+#
 # Set default user to prevent user@hostname from displaying in
 # prompt while on home machine
 DEFAULT_USER="$USER"

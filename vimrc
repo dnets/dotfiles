@@ -229,7 +229,7 @@ noremap <leader><leader>l :source ~/vim_session<CR>
 noremap <localleader><localleader>r :setlocal ro!<CR>
 
 " Write current buffer
-nnoremap <leader>w :w!<CR>
+nnoremap <localleader>w :w!<CR>
 
 " Update current buffer
 nnoremap <leader>u :up<CR>
@@ -310,38 +310,37 @@ noremap <leader>h <C-W>h
 noremap <leader>l <C-W>l
 
 " Window shortcuts
-noremap <leader>s :split<CR>
-noremap <leader>v :vsplit<CR>
-noremap <leader>o :only<CR>
+noremap <leader><leader>s :split<CR>
+noremap <leader><leader>v :vsplit<CR>
+noremap <leader><leader>o :only<CR>
 noremap <leader><leader>q :quit<CR>
 
 "--------------------------------------------------------------
 " VIMRC04f            Buffer macros
 "--------------------------------------------------------------
 
-" Next buffer
+" Next/Previous buffer
+nnoremap <C-]> :bn<CR>
+nnoremap <C-[> :bp<CR>
 nnoremap <leader>; :bn<CR>
-
-" Previous buffer
-" nnoremap <leader>; :bp<CR>
 
 " Display buffers
 nnoremap <leader><leader>b :ls<CR>
 
 " New [No Name] buffer in current window
-nnoremap <leader>n :enew<CR>
+nnoremap <localleader>n :enew<CR>
 
 " Delete current buffer
 nnoremap <leader>q :bp\|bd! #<CR>
 
 " Close all the buffers
-noremap <leader>bad :1,1000 bd!<CR>
+noremap <localleader>bad :1,1000 bd!<CR>
 
 " Switch CWD to the directory of the open buffer
-noremap <leader>bcd :cd %:p:h<CR>:pwd<CR>
+noremap <localleader>bcd :cd %:p:h<CR>:pwd<CR>
 
 " Reload buffers
-noremap <leader>br :bufdo e<CR>
+noremap <localleader>br :bufdo e<CR>
 "--------------------------------------------------------------
 " VIMRC04g             Tab macros
 "--------------------------------------------------------------
@@ -364,19 +363,19 @@ noremap <leader>te :tabedit <C-r>=expand("%:p:h")<CR>
 "--------------------------------------------------------------
 
 " Toggle spell checking
-noremap <leader>z :setlocal spell!<CR>
+noremap <localleader>z :setlocal spell!<CR>
 
 " Next word
-noremap <leader>zn ]s
+noremap <localleader>zn ]s
 
 " Previous word
-noremap <leader>zp [s
+noremap <localleader>zp [s
 
 " Add to dictionary
-noremap <leader>za zg
+noremap <localleader>za zg
 
 " Correction
-noremap <leader>z? z=
+noremap <localleader>z? z=
 
 "--------------------------------------------------------------
 " VIMRC050          Helper functions
@@ -492,7 +491,6 @@ call vundle#begin() " or vundle#begin('~/some/path/here')
 
 " Register plugins
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Conque-Shell'
 Plugin 'wesleyche/Trinity'
 Plugin 'wesleyche/srcexpl'
 Plugin 'taglist.vim'
@@ -508,9 +506,6 @@ Plugin 'bling/vim-bufferline'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'powerman/vim-plugin-ruscmd'
 Plugin 'reedes/vim-pencil'
-Plugin 'sirver/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'farseer90718/vim-taskwarrior'
 Plugin 'mattn/emmet-vim'
 Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'scrooloose/nerdcommenter'
@@ -518,11 +513,13 @@ Plugin 'tpope/vim-repeat'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ahayman/vim-nodejs-complete'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/SyntaxComplete'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
+Plugin 'sirver/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'easymotion/vim-easymotion'
 
 " Call end function
 call vundle#end()
@@ -616,10 +613,11 @@ let g:easytags_async=1
 "--------------------------------------------------------------
 
 " Toggle NERDTree
-nnoremap <localleader><localleader>n :TrinityToggleNERDTree<CR>
+nnoremap <leader>n :TrinityToggleNERDTree<CR>
 
-" Define g:NERDTreeDirArrows
-let g:NERDTreeDirArrows=0
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 "--------------------------------------------------------------
 "                        vim-airline
@@ -716,7 +714,7 @@ noremap <leader><leader>ps :PencilSoft<CR>
 noremap <leader><leader>pf :PFormatToggle<CR>
 
 " Set default textwidth
-let g:pencil#textwidth=60
+let g:pencil#textwidth=16
 
 "--------------------------------------------------------------
 "                         UltiSnips
@@ -724,10 +722,12 @@ let g:pencil#textwidth=60
 
 " Expand snippet
 " let g:UltiSnipsExpandTrigger = '<c-tab>'
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " List snippets
 " let g:UltiSnipsListSnippets =
-
+let g:UltiSnipsSnippetsDir="/home/dnets/.vim/UltiSnips/"
 
 "--------------------------------------------------------------
 "                           Emmet
@@ -737,10 +737,10 @@ let g:pencil#textwidth=60
 let g:user_emmet_leader_key = '<c-e>'
 
 "--------------------------------------------------------------
-"               Javascirpt Libraries Syntax
+"               Javascript Libraries Syntax
 "--------------------------------------------------------------
 
-let g:used_javascript_libs = 'underscore, backbone, angularjs, angularui, angularuirouter, handlebars'
+let g:used_javascript_libs="underscore,backbone,angularjs,angularui,angularuirouter,handlebars,jquery"
 
 "--------------------------------------------------------------
 "                      YouCompleteMe
@@ -749,6 +749,22 @@ let g:used_javascript_libs = 'underscore, backbone, angularjs, angularui, angula
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 let g:ycm_key_invoke_completion = '<C-b>'
+
+"--------------------------------------------------------------
+"                        easymotion
+"--------------------------------------------------------------
+
+map <Leader> <Plug>(easymotion-prefix)
+nmap <leader>w <Plug>(easymotion-bd-w)
+nmap s <Plug>(easymotion-s2)
+nmap <leader>s <Plug>(easymotion-s)
+map / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1 " US layout
 
 "--------------------------------------------------------------
 " VIMRCTOC              END OF .vimrc
