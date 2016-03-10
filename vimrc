@@ -23,7 +23,6 @@
 "                        Plugins used:
 "
 " Vundle (plugin manager)
-" conque-shell (run interactive commands inside a Vim buffer)
 " Trinity (manages Taglist, Source Explorer and NERDtree)
 " Source Explorer (explore definitions)
 " taglist (list tags in window, requires exuberant ctags)
@@ -180,6 +179,12 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
+
+" Enable scrollwheel
+set mouse=a
+
+" needed so that vim still understands escape sequences
+nnoremap <esc>^[ <esc>^[
 "--------------------------------------------------------------
 " VIMRC030           Indentation settings
 "--------------------------------------------------------------
@@ -220,7 +225,7 @@ let g:maplocalleader ='['
 "--------------------------------------------------------------
 
 " Save session
-noremap <leader><leader>s :mksession! ~/vim_session<CR>
+noremap <leader><leader>! :mksession! ~/vim_session<CR>
 
 " Load session
 noremap <leader><leader>l :source ~/vim_session<CR>
@@ -245,6 +250,12 @@ nnoremap <leader><leader><leader>w :wqa!<CR>
 
 " Change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>
+
+" Open .vimrc for editing
+nnoremap <leader>cfg :e ~/.vimrc<CR>
+
+" Use current file as cfg source
+nnoremap <leader>cfs :source %<CR>
 
 "--------------------------------------------------------------
 " VIMRC04c      Edit, Copy, Paste macros
@@ -341,6 +352,7 @@ noremap <localleader>bcd :cd %:p:h<CR>:pwd<CR>
 
 " Reload buffers
 noremap <localleader>br :bufdo e<CR>
+
 "--------------------------------------------------------------
 " VIMRC04g             Tab macros
 "--------------------------------------------------------------
@@ -463,19 +475,15 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+" javascript: close brackets and add semicolon
+autocmd FileType javascript inoremap (; ();<Esc>hi
+
+" javascript: close brackets
+autocmd FileType javascript inoremap {<CR> {<CR>}<Esc><S-o>
+
 "--------------------------------------------------------------
 " VIMRC060     Plugins, plugin settings & macros
 "--------------------------------------------------------------
-"                           Matchit
-"--------------------------------------------------------------
-" Enable matchit
-runtime macros/matchit.vim
-
-" make matchit work on C-like filetypes
-" c and cpp are already handled by their ftplugin
-au Filetype css,javascript,php
-        \ let b:match_words = &matchpairs
-
 "--------------------------------------------------------------
 "                           Vundle
 "--------------------------------------------------------------
@@ -491,11 +499,12 @@ call vundle#begin() " or vundle#begin('~/some/path/here')
 
 " Register plugins
 Plugin 'gmarik/Vundle.vim'
-Plugin 'wesleyche/Trinity'
-Plugin 'wesleyche/srcexpl'
-Plugin 'taglist.vim'
-Plugin 'xolox/vim-easytags'
+" Plugin 'wesleyche/Trinity'
+" Plugin 'wesleyche/srcexpl'
+" Plugin 'taglist.vim'
+" Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
@@ -520,6 +529,7 @@ Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'digitaltoad/vim-jade'
 
 " Call end function
 call vundle#end()
@@ -529,34 +539,30 @@ call vundle#end()
 filetype plugin indent on
 
 "--------------------------------------------------------------
-"                        Conque-Shell
+"                           Matchit
 "--------------------------------------------------------------
 
-" Enable fast mode (no colors etc)
-let g:ConqueTerm_FastMode=1
+" Enable matchit
+runtime macros/matchit.vim
 
-" Enable session support
-let g:ConqueTerm_SessionSupport=1
-
-" Keep updating terminal buffer
-let g:ConqueTerm_ReadUnfocused=1
-
-" Open bash in current window using current buffer's CWD
-nnoremap <leader><leader>t :ConqueTerm bash<CR>
+" make matchit work on C-like filetypes
+" c and cpp are already handled by their ftplugin
+au Filetype css,javascript,php
+        \ let b:match_words = &matchpairs
 
 "--------------------------------------------------------------
 "                          Trinity
 "--------------------------------------------------------------
 
 " Toggle Tag List, Source Explorer & NERDTree
-nnoremap <localleader><localleader>a :TrinityToggleAll<CR>
+" nnoremap <localleader><localleader>a :TrinityToggleAll<CR>
 
 "--------------------------------------------------------------
 "                      Source Explorer
 "--------------------------------------------------------------
 
 " Toggle Source Explorer
-nnoremap <localleader><localleader>s :TrinityToggleSourceExplorer<CR>
+" nnoremap <localleader><localleader>s :TrinityToggleSourceExplorer<CR>
 
 " Set the height of Source Explorer window
 let g:SrcExpl_winHeight=5
@@ -613,11 +619,18 @@ let g:easytags_async=1
 "--------------------------------------------------------------
 
 " Toggle NERDTree
-nnoremap <leader>n :TrinityToggleNERDTree<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeWinPos = "right"
+
+"--------------------------------------------------------------
+"                       NERDCommenter
+"--------------------------------------------------------------
+
+let NERDSpaceDelims=1
 
 "--------------------------------------------------------------
 "                        vim-airline
@@ -756,12 +769,8 @@ let g:ycm_key_invoke_completion = '<C-b>'
 
 map <Leader> <Plug>(easymotion-prefix)
 nmap <leader>w <Plug>(easymotion-bd-w)
-nmap s <Plug>(easymotion-s2)
-nmap <leader>s <Plug>(easymotion-s)
-map / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map n <Plug>(easymotion-next)
-map N <Plug>(easymotion-prev)
+nmap s <Plug>(easymotion-s)
+nmap <leader>s <Plug>(easymotion-s2)
 
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1 " US layout
