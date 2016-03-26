@@ -62,6 +62,8 @@ alias rmr="rm -rdvI"
 # ls: list directories
 alias lsd="ls -d  */ .*/"
 
+alias ls="ls -a --color=tty"
+
 # Pacman: search packages
 alias pms="sudo pacman -Ss"
 # Pacman: install package
