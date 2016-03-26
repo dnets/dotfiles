@@ -92,7 +92,7 @@ set omnifunc=syntaxcomplete#Complete
 set t_Co=256
 
 " Terminal color scheme
-colorscheme PaperColor
+colorscheme molokai
 
 " Set options when running in GUI mode
 if has("gui_running")
@@ -103,8 +103,8 @@ if has("gui_running")
     set guitablabel=%M\ %t
 endif
 
-" Turn on relative line numbers
-set rnu
+" Turn on line numbers
+set nu
 
 " Don't wrap lines
 set nowrap
@@ -217,8 +217,8 @@ let mapleader=' '
 let g:mapleader=' '
 
 " Set 2nd mapleader (used for coding-related macros)
-let maplocalleader ='['
-let g:maplocalleader ='['
+let maplocalleader =','
+let g:maplocalleader =','
 
 "--------------------------------------------------------------
 " VIMRC04a         Save & Session macros
@@ -331,12 +331,14 @@ noremap <leader><leader>q :quit<CR>
 "--------------------------------------------------------------
 
 " Next/Previous buffer
-nnoremap <C-]> :bn<CR>
-nnoremap <C-[> :bp<CR>
+nnoremap <S-tab> :bp<CR>
+nnoremap <tab> :bn<CR>
 nnoremap <leader>; :bn<CR>
 
 " Display buffers
-nnoremap <leader><leader>b :ls<CR>
+nnoremap <leader>b :ls<CR>
+
+" Switch to last buffer and back
 
 " New [No Name] buffer in current window
 nnoremap <localleader>n :enew<CR>
@@ -525,12 +527,13 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vim-scripts/SyntaxComplete'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
+" Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'digitaltoad/vim-jade'
-
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'vim-airline/vim-airline-themes'
 " Call end function
 call vundle#end()
 
@@ -761,7 +764,9 @@ let g:used_javascript_libs="underscore,backbone,angularjs,angularui,angularuirou
 
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
-let g:ycm_key_invoke_completion = '<C-b>'
+let g:ycm_key_invoke_completion = '<c-b>'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 "--------------------------------------------------------------
 "                        easymotion
