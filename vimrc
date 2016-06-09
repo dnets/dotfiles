@@ -104,7 +104,7 @@ if has("gui_running")
 endif
 
 " Turn on line numbers
-set nu
+set rnu
 
 " Don't wrap lines
 set nowrap
@@ -217,8 +217,8 @@ let mapleader=' '
 let g:mapleader=' '
 
 " Set 2nd mapleader (used for coding-related macros)
-let maplocalleader =','
-let g:maplocalleader =','
+let maplocalleader ='['
+let g:maplocalleader ='['
 
 "--------------------------------------------------------------
 " VIMRC04a         Save & Session macros
@@ -505,6 +505,7 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'wesleyche/srcexpl'
 " Plugin 'taglist.vim'
 " Plugin 'xolox/vim-easytags'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'scrooloose/nerdtree'
@@ -577,7 +578,7 @@ let g:SrcExpl_refreshTime=100
 " let g:SrcExpl_jumpKey=<localleader><ENTER>"
 
 " Map key for back from the definition context
-let g:SrcExpl_gobackKey='<c-[>'
+" let g:SrcExpl_gobackKey='<c-[>'
 
 " List of buffer-using plugins by buffer name to avoid conflicts
 let g:SrcExpl_pluginList=[ "__Tag_List__", "_NERD_tree_", ]
@@ -595,10 +596,10 @@ let g:SrcExpl_isUpdateTags=0
 " let g:SrcExpl_updateTagsKey = <localleader><localleader>u"
 
 " Set "<F3>" key for displaying the previous definition in the jump list
-let g:SrcExpl_prevDefKey='<localleader>['
+" let g:SrcExpl_prevDefKey='<localleader>['
 
 " Set "<F4>" key for displaying the next definition in the jump list
-let g:SrcExpl_nextDefKey='<localleader>]'
+" let g:SrcExpl_nextDefKey='<localleader>]'
 
 "--------------------------------------------------------------
 "                          Tag List
@@ -685,10 +686,10 @@ autocmd VimEnter *
 highlight ExtraWhitespace ctermbg=1
 
 " Delete trailing whitespace
-noremap <localleader><localleader><localleader>w :StripWhitespace<CR>
+noremap <localleader><localleader><localleader>w :ToggleWhitespace<CR>
 
 " Toggle whitespace highlighting
-noremap <localleader><localleader>w :ToggleWhitespace<CR>
+noremap <localleader><localleader>w :StripWhitespace<CR>
 
 
 "--------------------------------------------------------------
@@ -773,7 +774,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "--------------------------------------------------------------
 
 map <Leader> <Plug>(easymotion-prefix)
-nmap <leader>w <Plug>(easymotion-bd-w)
+nmap z <Plug>(easymotion-bd-w)
 nmap s <Plug>(easymotion-s)
 nmap <leader>s <Plug>(easymotion-s2)
 

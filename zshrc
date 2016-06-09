@@ -90,11 +90,14 @@ alias tmux="tmux -2"
 # Get files from EX.UA
 alias exua="~/scripts/exua.sh"
 
+# Play Project Brutality + Hell On Earth
+alias zb="~/games/z3/zandronum Project\ Brutality\ 2.03.pk3 hellonearthstarterpack.wad ExtraTextures.wad PB_WOSHUD_Normal.pk3"
+
 # mkdir
 alias md="mkdir -pv"
 
 # git: checkout branch
-alias gcb="git checkout -b"
+alias gbn="git checkout -b"
 # git: list tracked files
 alias gls="git ls-files"
 # git: push origin master
