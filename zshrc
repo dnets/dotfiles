@@ -84,6 +84,9 @@ alias y="yaourt"
 # yaourt: update
 alias yu="yaourt -Syua"
 
+# APT
+alias ag="sudo apt-get"
+
 # tmux
 alias tmux="tmux -2"
 
@@ -110,10 +113,12 @@ alias glga="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset
 alias glgs="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  --stat"
 alias glgsa="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  --stat --all"
 alias gbd="git branch -d"
+alias gbv="git branch -v"
+alias gdh="git diff HEAD"
+alias gdhw="git diff HEAD --word-diff"
+alias gpall="git push --all -u"
 
 alias gmeld="git difftool -d"
-
-alias gbv="git branch -v"
 
 # Disk usage human-readable
 alias df="df -h"

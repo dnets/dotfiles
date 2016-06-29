@@ -1,6 +1,7 @@
 
 # vim:ft=zsh ts=2 sw=2 sts=2
 #
+# dnets custom theme by Dmitry Nets (dmitrynets@gmail.com) based on
 # agnoster's Theme - https://gist.github.com/3712874
 # A Powerline-inspired theme for ZSH
 #
