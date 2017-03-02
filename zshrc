@@ -36,6 +36,7 @@ bindkey -M menuselect 'l' vi-forward-char
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=/home/dnets/.gem/ruby/2.2.0/bin:$PATH
+export PATH=/home/dnets/.gem/ruby/2.3.0/bin:$PATH
 export EDITOR="vim"
 export NO_AT_BRIDGE=1
 # export MANPATH="/usr/local/man:$MANPATH#"
@@ -63,6 +64,7 @@ alias rmr="rm -rdvI"
 alias lsd="ls -d  */ .*/"
 
 alias ls="ls -a --color=tty"
+alias fstr="grep -rnw '.' -e "
 
 # Pacman: search packages
 alias pms="sudo pacman -Ss"
@@ -99,12 +101,24 @@ alias zb="~/games/z3/zandronum Project\ Brutality\ 2.03.pk3 hellonearthstarterpa
 # mkdir
 alias md="mkdir -pv"
 
+# mkdir and cd into it
+alias mdcd='mdcd() { mkdir -pv  $1; cd $1 };mdcd'
+
+# s3
+alias s3="s3cmd"
+
+# pass alias
+alias pw="pass show -c"
+alias pwg="pass generate -n -c"
+
 # git: checkout branch
 alias gbn="git checkout -b"
 # git: list tracked files
 alias gls="git ls-files"
 # git: push origin master
 alias gpom="git push origin master"
+# git: pull origin master
+alias glom="git pull origin master"
 # git: log
 alias glog="git log --graph --stat"
 alias gloa="git log --graph --stat --all"
@@ -144,3 +158,6 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 # command
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# Laravel
+export PATH="/home/dnets/.config/composer/vendor/bin:$PATH"
