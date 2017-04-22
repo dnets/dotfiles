@@ -65,6 +65,7 @@ alias lsd="ls -d  */ .*/"
 
 alias ls="ls -a --color=tty"
 alias fstr="grep -rnw '.' -e "
+alias fstri="grep -rnwi '.' -e "
 
 # Pacman: search packages
 alias pms="sudo pacman -Ss"
@@ -119,6 +120,10 @@ alias gls="git ls-files"
 alias gpom="git push origin master"
 # git: pull origin master
 alias glom="git pull origin master"
+# git: push origin dev
+alias gpod="git push origin dev"
+# git: pull origin dev
+alias glod="git pull origin dev"
 # git: log
 alias glog="git log --graph --stat"
 alias gloa="git log --graph --stat --all"
@@ -131,7 +136,11 @@ alias gbv="git branch -v"
 alias gdh="git diff HEAD"
 alias gdhw="git diff HEAD --word-diff"
 alias gpall="git push --all -u"
+# git: drop all stashes
+alias gstc="git stash clear"
+# git: pull all remote branches
 
+# call meld as diff tool
 alias gmeld="git difftool -d"
 
 # Disk usage human-readable
